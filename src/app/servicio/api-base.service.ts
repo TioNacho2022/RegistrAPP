@@ -81,12 +81,26 @@ export class ApiBaseService {
   }
 
   public ecnotrarAlumno(id:number){
-    this.http.get(this.url_asitencias+'/'+id+'/alumnos?rut='+this.usuarioDatos[0]?.usuario,{
+    this.http.get(this.url_asitencias+'/'+id+'/alumnos?rut='+this.usuarioDatos[0]?.rut,{
       headers: {
         'Content-Type': 'application/json'
       },
-    }).subscribe(res => {
-      this.presenteDatos = res;
+    }).subscribe(async res => {
+      if (this.presenteDatos[0].rut === this.usuarioDatos[0]?.rut) {
+        this.presenteDatos = res;
+
+        this.presente(this.presenteDatos[0].id)
+
+
+      }else{
+        const alert = await this.alertController.create({
+          header: 'Usuario no existe',
+          message: `<img src="../../assets/icon/user.png" alt="g-maps" style="border-radius: 2px">`,
+        });
+
+        await alert.present();
+
+      }
 
     })
   }
@@ -96,8 +110,14 @@ export class ApiBaseService {
       headers: {
         'Content-Type': 'application/json'
       },
-    }).subscribe(res => {
-      console.log(res)
+    }).subscribe(async res => {
+
+      const alert = await this.alertController.create({
+        header: 'Asitencia completa',
+        message: `<img src="../../assets/icon/ckecked.png" alt="g-maps" style="border-radius: 2px">`,
+      });
+
+      await alert.present();
 
     })
   }

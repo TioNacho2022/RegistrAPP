@@ -43,6 +43,8 @@ export class EscanQrPage implements OnInit {
         this.scanActivate = false;
         this.datosQr = JSON.parse(result.content);
 
+        this.api.ecnotrarAlumno(this.datosQr.id);
+
       }else{
         alert('No se encontraron DATOS');
       }
