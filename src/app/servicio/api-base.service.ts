@@ -5,21 +5,26 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Ramos } from '../modelos/ramo';
 import { Asistencia, AsistenciaResponse } from '../modelos/asitencia';
+import { Alumno } from '../modelos/alumno';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiBaseService {
 
-  private usuarioDatos!:User;
+  private usuarioDatos!:any;
 
   private ramosDatos!:Ramos;
+
   private asistenciaDatos!: any;
+
+  private presenteDatos!:Alumno|any;
 
   constructor(private http:HttpClient, private alertController: AlertController, private router:Router) { }
 
   private url_usuarios:string="https://registrapp-production.up.railway.app/usuarios";
   private url_ramos:string="https://registrapp-production.up.railway.app/ramos";
   private url_asitencias:string="https://registrapp-production.up.railway.app/asistencias";
+  private url_alumnos:string="https://registrapp-production.up.railway.app/alumnos";
 
   public authUser(usuario:string,password:string){
     this.http.get<UserResponse>(this.url_usuarios+`?usuario=${usuario}&password=${password}`,{
@@ -62,6 +67,7 @@ export class ApiBaseService {
     })
   }
 
+
   public agregarAsitencia(objeto:Asistencia, callback?:Function):any{
     this.http.post<AsistenciaResponse>(this.url_asitencias,objeto,{
       headers: {
@@ -74,6 +80,27 @@ export class ApiBaseService {
     })
   }
 
+  public ecnotrarAlumno(id:number){
+    this.http.get(this.url_asitencias+'/'+id+'/alumnos?rut='+this.usuarioDatos[0]?.usuario,{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).subscribe(res => {
+      this.presenteDatos = res;
+
+    })
+  }
+
+  public presente(id:number){
+    this.http.put(this.url_alumnos+'/'+id,{presente:true},{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).subscribe(res => {
+      console.log(res)
+
+    })
+  }
 
 
 
@@ -90,5 +117,9 @@ export class ApiBaseService {
 
   public obtenerUsuariosDatos(){
     return this.usuarioDatos;
+  }
+
+  public obtenerPresenteDatos(){
+    return this.presenteDatos[0];
   }
 }

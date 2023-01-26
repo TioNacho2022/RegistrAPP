@@ -20,6 +20,7 @@ export class GenerarQrPage{
   public formQr! :FormGroup | any;
   public sigla! :string;
   public nombre! :string;
+  public listaalumnosId! :number;
 
   qrCodeString:string = "";
 
@@ -51,12 +52,15 @@ export class GenerarQrPage{
          this.qr.ramosId = this.api.obtenerRamosDatos()[index]?.id;
          this.sigla = this.api.obtenerRamosDatos()[index]?.sigla;
          this.nombre = this.api.obtenerRamosDatos()[index]?.nombre;
+         this.listaalumnosId = this.api.obtenerRamosDatos()[index]?.listaalumnosId;
         }
       }
 
       const fecha = new Date();
       this.qr.fecha = fecha.toLocaleDateString();
       this.qr.hora = fecha.getHours()+':'+fecha.getMinutes()
+
+
 
       this.api.agregarAsitencia({...this.qr}, ()=>{
         this.qr.id = this.api.obtenerAsitenciaDatos()?.id
@@ -83,6 +87,7 @@ export class GenerarQrPage{
 
 
   }
+
   public showLoading() {
 
     this.v2 = false;

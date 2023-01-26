@@ -1,11 +1,14 @@
-export type Alumno={
- id:number,
- asistenciasId:number,
- pNombre:string,
- sNombre:string,
- apPaterno:string,
- apMaterno:string,
- rut:string,
- presente: false,
- fecha:string
+export type Alumno=[
+  {
+  id: 0,
+  asistenciasId:number,
+  pNombre: string,
+  sNombre: string,
+  apPaterno: string,
+  apMaterno: string,
+  usuario: string,
+  rut: string,
+  correo: string,
+  presente:false
 }
+]
