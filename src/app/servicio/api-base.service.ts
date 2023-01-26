@@ -81,15 +81,17 @@ export class ApiBaseService {
   }
 
   public ecnotrarAlumno(id:number){
-    this.http.get(this.url_asitencias+'/'+id+'/alumnos?rut='+this.usuarioDatos[0]?.rut,{
+    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.usuarioDatos.rut}`,{
       headers: {
         'Content-Type': 'application/json'
       },
     }).subscribe(async res => {
-      if (this.presenteDatos[0].rut === this.usuarioDatos[0]?.rut) {
+      this.presenteDatos = res
+      if(this.presenteDatos[0]?.rut === this.usuarioDatos?.rut){
+
         this.presenteDatos = res;
 
-        this.presente(this.presenteDatos[0].id)
+        this.presente(this.presenteDatos[0]?.id)
 
 
       }else{
@@ -106,7 +108,7 @@ export class ApiBaseService {
   }
 
   public presente(id:number){
-    this.http.put(this.url_alumnos+'/'+id,{presente:true},{
+    this.http.patch(this.url_alumnos+'/'+id,{'presente':true},{
       headers: {
         'Content-Type': 'application/json'
       },
@@ -114,7 +116,7 @@ export class ApiBaseService {
 
       const alert = await this.alertController.create({
         header: 'Asitencia completa',
-        message: `<img src="../../assets/icon/ckecked.png" alt="g-maps" style="border-radius: 2px">`,
+        message: `<img src="../../assets/icon/checked.png" alt="g-maps" style="border-radius: 2px">`,
       });
 
       await alert.present();

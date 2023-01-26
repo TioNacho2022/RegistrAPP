@@ -13,16 +13,39 @@
       "tipo": "alumno"
     },
     {
-      "id": 0,
-      "pNombre": "Cristian2",
+      "id": 1,
+      "pNombre": "Matias",
       "sNombre": "Bastian2",
       "apPaterno": "leiva2",
       "apMaterno": "Diaz2",
-      "usuario": "cris.leiva2",
-      "rut": "20918768-k",
+      "usuario": "matias.dia",
+      "rut": "21918768-k",
       "password": "1234",
       "correo": "cris.leiva@duocuc.cl",
-      "tipo": "profesor"
+      "tipo": "alumno"
+    },{
+      "id": 2,
+      "pNombre": "Benjamin",
+      "sNombre": "Bastian",
+      "apPaterno": "leiva",
+      "apMaterno": "Diaz",
+      "usuario": "cris.leiva",
+      "rut": "21918768-k",
+      "password": "1234",
+      "correo": "cris.leiva@duocuc.cl",
+      "tipo": "alumno"
+    },
+    {
+      "id": 3,
+      "pNombre": "Karen",
+      "sNombre": "Ponce",
+      "apPaterno": "leiva2",
+      "apMaterno": "Diaz2",
+      "usuario": "karen.ponce",
+      "rut": "19918768-8",
+      "password": "1234",
+      "correo": "cris.leiva@duocuc.cl",
+      "tipo": "alumno"
     }
   ],
 
@@ -44,19 +67,15 @@
       "sigla": "077D"
     }
   ],
-  "asistencias": [
-    {
-      "id": 1,
-      "ramosId": 1,
-      "fecha": "25-01-2023",
-      "hora": "17:18"
 
-    }
+  "asistencias": [
+
   ],
+
   "alumnos": [
     {
       "id": 0,
-      "asistenciasId":1,
+      "asistenciasId":2,
       "pNombre": "Cristian",
       "sNombre": "Bastian",
       "apPaterno": "leiva",
@@ -69,24 +88,24 @@
     },{
       "id": 1,
       "asistenciasId":2,
-      "pNombre": "Cristian",
+      "pNombre": "Matias",
       "sNombre": "Bastian",
       "apPaterno": "leiva",
       "apMaterno": "Diaz",
-      "usuario": "cris.leiva",
-      "rut": "20918768-k",
+      "usuario": "matias.dia",
+      "rut": "21918768-k",
       "correo": "cris.leiva@duocuc.cl",
       "presente":false
 
     },{
       "id": 2,
       "asistenciasId":1,
-      "pNombre": "Cristian",
-      "sNombre": "Bastian",
+      "pNombre": "Karen",
+      "sNombre": "Ponce",
       "apPaterno": "leiva",
       "apMaterno": "Diaz",
-      "usuario": "cris.leiva",
-      "rut": "20918768-k",
+      "usuario": "karen.ponce",
+      "rut": "19918768-8",
       "correo": "cris.leiva@duocuc.cl",
       "presente":false
 
