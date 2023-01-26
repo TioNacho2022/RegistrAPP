@@ -83,14 +83,8 @@ export class GenerarQrPage{
 
 
   }
-  async showLoading() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Finalizando..',
-      duration: 3000,
-      spinner: 'crescent',
-    });
+  public showLoading() {
 
-    loading.present();
     this.v2 = false;
     this.v3 = true;
     this.v4 = false;

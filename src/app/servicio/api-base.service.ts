@@ -75,6 +75,8 @@ export class ApiBaseService {
   }
 
 
+
+
   public vaciar(){
     this.asistenciaDatos = '';
   }
@@ -84,5 +86,9 @@ export class ApiBaseService {
   }
   public obtenerAsitenciaDatos(){
     return this.asistenciaDatos;
+  }
+
+  public obtenerUsuariosDatos(){
+    return this.usuarioDatos;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { ApiBaseService } from '../servicio/api-base.service';
 
 @Component({
   selector: 'app-escan-qr',
@@ -10,7 +11,9 @@ export class EscanQrPage implements OnInit {
 
   scanActivate: boolean = false;
 
-  constructor() { }
+  datosQr!: string | any;
+
+  constructor(private api:ApiBaseService) { }
 
   ngOnInit() {
   }
@@ -34,11 +37,12 @@ export class EscanQrPage implements OnInit {
       this.scanActivate = true;
       BarcodeScanner.hideBackground();
 
-      const result = await BarcodeScanner.startScan();
+      const result:any = await BarcodeScanner.startScan();
 
       if(result.hasContent){
         this.scanActivate = false;
-        alert(result.content);
+        this.datosQr = JSON.parse(result.content);
+
       }else{
         alert('No se encontraron DATOS');
       }

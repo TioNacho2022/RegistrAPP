@@ -25,42 +25,86 @@
       "tipo": "profesor"
     }
   ],
+
+  "listaAlumnos":[{
+    "id":1,
+    "alumnos":[{
+      "id": 0,
+      "pNombre": "Cristian",
+      "sNombre": "Bastian",
+      "apPaterno": "leiva",
+      "apMaterno": "Diaz",
+      "usuario": "cris.leiva",
+      "rut": "20918768-k",
+      "correo": "cris.leiva@duocuc.cl"
+
+    },{"id": 1,
+      "pNombre": "Cristian",
+      "sNombre": "Bastian",
+      "apPaterno": "leiva",
+      "apMaterno": "Diaz",
+      "usuario": "cris.leiva",
+      "rut": "20918768-k",
+      "correo": "cris.leiva@duocuc.cl"
+    }]
+  },{
+    "id":2,
+    "alumnos":[{
+      "id": 0,
+      "pNombre": "Cristian",
+      "sNombre": "Bastian",
+      "apPaterno": "leiva",
+      "apMaterno": "Diaz",
+      "usuario": "cris.leiva",
+      "rut": "20918768-k",
+      "correo": "cris.leiva@duocuc.cl"
+
+    },{"id": 1,
+      "pNombre": "Cristian",
+      "sNombre": "Bastian",
+      "apPaterno": "leiva",
+      "apMaterno": "Diaz",
+      "usuario": "cris.leiva",
+      "rut": "20918768-k",
+      "correo": "cris.leiva@duocuc.cl"
+    }]
+  }],
+
+
   "ramos": [
     {
       "id": 0,
       "nombre": "Arquitectura",
-      "sigla": "077D"
+      "sigla": "077D",
+      "listaalumnosId":1
     },
     {
       "id": 1,
       "nombre": "Calidad de Software",
-      "sigla": "088D"
+      "sigla": "088D",
+      "listaalumnosId":1
     },
     {
       "id": 2,
       "nombre": "Programacion de aplicaciones moviles",
-      "sigla": "077D"
+      "sigla": "077D",
+      "listaalumnosId":2
     }
   ],
   "asistencias": [
     {
       "id": 1,
       "ramosId": 1,
+      "listaId":1,
       "fecha": "25-01-2023",
       "hora": "17:18"
+
     }
   ],
-  "alumnos": [
+  "listas": [
     {
-      "id": 0,
-      "asistenciasId": 0,
-      "pNombre": "Cristian",
-      "sNombre": "Bastian",
-      "apPaterno": "leiva",
-      "apMaterno": "Diaz",
-      "rut": "20918768-k",
-      "presente": false,
-      "fecha": ""
+      "id": 1,
+      "alumnos":[]
     }
   ]
 }
