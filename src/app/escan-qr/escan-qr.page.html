@@ -6,11 +6,11 @@
 
 <ion-content [fullscreen]="true" [style.--background]="scanActivate?'#00000000': 'ffe2ba'">
   <ion-button expand="full" (click)="startScanner()" [hidden]="scanActivate" color="dark">Escanear QR</ion-button>
-  <ion-row [hidden]="!scanActivate">
+  <ion-row class="scan-button" [hidden]="!scanActivate">
     <ion-col class="ion-no-padding">
       <ion-button expand="full" (click)="stopScanner()" color="danger">Detener</ion-button>
     </ion-col>
   </ion-row>
-  <div [hidden]="!scanActivate"></div>
+  <div class="scan-box" [hidden]="!scanActivate"></div>
 
 </ion-content>
