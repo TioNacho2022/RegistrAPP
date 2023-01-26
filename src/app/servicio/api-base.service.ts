@@ -17,9 +17,9 @@ export class ApiBaseService {
 
   constructor(private http:HttpClient, private alertController: AlertController, private router:Router) { }
 
-  private url_usuarios:string=" http://localhost:3000/usuarios";
-  private url_ramos:string=" http://localhost:3000/ramos";
-  private url_asitencias:string=" http://localhost:3000/asistencias";
+  private url_usuarios:string="https://registrapp-production.up.railway.app/usuarios";
+  private url_ramos:string="https://registrapp-production.up.railway.app/ramos";
+  private url_asitencias:string="https://registrapp-production.up.railway.app/asistencias";
 
   public authUser(usuario:string,password:string){
     this.http.get<UserResponse>(this.url_usuarios+`?usuario=${usuario}&password=${password}`,{
