@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="duoc" class="ion-text-center">
+    <h3><ion-icon name="qr-code-outline" slot="start"></ion-icon> Generar QR</h3>
+  </ion-toolbar>
+  <ion-toolbar color="duoc">
+    <ion-buttons slot="start">
+      <ion-back-button text="volver"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card class="ion-text-center">
+  <qrcode *ngIf="v2"
+  [qrdata]="qrCodeString"
+  [width]="236"
+  [errorCorrectionLevel]="'M'">
+  <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+  </qrcode>
+  <ion-card-content>
+    <form action="" [formGroup]="formQr">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h3 *ngIf="v2">{{nombre}} {{sigla}}
+            </h3>
+            <ion-list *ngIf="v3">
+              <ion-select formControlName="nombre" placeholder="Asignatura">
+                <ion-select-option  *ngFor="let r of this.api.obtenerRamosDatos()">{{r.nombre}} {{r.sigla}}</ion-select-option>
+              </ion-select>
+              <ion-note slot="error" color="danger" *ngIf="campo('nombre')?.invalid  && campo('nombre')?.errors && campo('nombre')?.errors.required && (fueTocado('nombre')|| v)">Campo obligatorio</ion-note>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="v4">
+          <ion-col>
+            <ion-button shape="round" color="medium" size="small">
+              <ion-icon name="calendar-outline" slot="start"></ion-icon>
+              {{this.qr.fecha}}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button shape="round" color="medium" size="small">
+              <ion-icon name="alarm-outline" slot="start"></ion-icon>
+              {{this.qr.hora}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button *ngIf="!v4" (click)="GenerarQr()" expand="block" color="dark" >
+              Generar QR
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button  *ngIf="v4" (click)="showLoading()" expand="block" color="dark" >
+              Finalizar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>

@@ -1,0 +1,55 @@
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <h1>Registr<span>APP</span></h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p>Una nueva forma de asitencia</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <h3>Bienvenido!</h3>
+      </ion-col>
+    </ion-row>
+    <form action="" [formGroup]="formularioLogin">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Usuario:</ion-label>
+            <ion-input formControlName="usuario"></ion-input>
+            <ion-note slot="error" *ngIf="campo('usuario')?.invalid  && campo('usuario')?.errors && campo('usuario')?.errors.required && fueTocado('usuario')">Campo obligatorio</ion-note>
+            <ion-note slot="error" *ngIf="campo('usuario')?.invalid  && campo('usuario')?.errors && campo('usuario')?.errors.minlength" >Caracteres minimo 10</ion-note>
+            <ion-note slot="error" *ngIf="campo('usuario')?.invalid  && campo('usuario')?.errors && campo('usuario')?.errors.maxlength" >Caracteres maximo 10</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Contraseña:</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+            <ion-note slot="error" *ngIf="campo('password')?.invalid  && campo('password')?.errors && campo('password')?.errors.required && fueTocado('password')">Campo obligatorio</ion-note>
+            <ion-note slot="error" *ngIf="campo('password')?.invalid  && campo('password')?.errors && campo('password')?.errors.minlength" >Caracteres minimo 4</ion-note>
+            <ion-note slot="error" *ngIf="campo('password')?.invalid  && campo('password')?.errors && campo('password')?.errors.maxlength" >Caracteres maximo 4</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="ingresar()" color="dark">Ingresar</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full"fill="clear" color="danger" [routerLink]="['registrarse']">Restablecer Contraseña</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-button expand="full" [routerLink]="['/generar-qr']" color="dark">
+      <ion-icon name="qr-code-outline" slot="start"></ion-icon>Generar QR
+    </ion-button>
+    <ion-button expand="full" [routerLink]="['/qr']" color="dark">
+      <ion-icon name="scan-outline" slot="start"></ion-icon>Escanear QR
+    </ion-button>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <h3>Registr<span>APP</span></h3>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+  </ion-content>
+</div>
