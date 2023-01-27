@@ -81,9 +81,25 @@
 	--ion-color-duoc-contrast-rgb: 0,0,0;
 	--ion-color-duoc-shade: #e0a201;
 	--ion-color-duoc-tint: #ffbf1a;
-}
 
+  --ion-color-fondo:  #012C56;
+	--ion-color-fondo-rgb: 1,44,86;
+	--ion-color-fondo-contrast: #ffffff;
+	--ion-color-fondo-contrast-rgb: 255,255,255;
+	--ion-color-fondo-shade: #01274c;
+	--ion-color-fondo-tint: #1a4167;
+}
+.ion-color-fondo {
+	--ion-color-base: var(--ion-color-fondo);
+	--ion-color-base-rgb: var(--ion-color-fondo-rgb);
+	--ion-color-contrast: var(--ion-color-fondo-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-fondo-contrast-rgb);
+	--ion-color-shade: var(--ion-color-fondo-shade);
+	--ion-color-tint: var(--ion-color-fondo-tint);
+}
 .ion-color-duoc {
+
+
 	--ion-color-base: var(--ion-color-duoc);
 	--ion-color-base-rgb: var(--ion-color-duoc-rgb);
 	--ion-color-contrast: var(--ion-color-duoc-contrast);

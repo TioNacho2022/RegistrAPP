@@ -83,7 +83,9 @@
       "usuario": "cris.leiva",
       "rut": "20918768-k",
       "correo": "cris.leiva@duocuc.cl",
-      "presente":false
+      "presente":false,
+      "hora":""
+
 
     },{
       "id": 1,
@@ -95,7 +97,8 @@
       "usuario": "matias.dia",
       "rut": "21918768-k",
       "correo": "cris.leiva@duocuc.cl",
-      "presente":false
+      "presente":false,
+      "hora":""
 
     },{
       "id": 2,
@@ -107,7 +110,8 @@
       "usuario": "karen.ponc",
       "rut": "19918768-8",
       "correo": "cris.leiva@duocuc.cl",
-      "presente":false
+      "presente":false,
+      "hora":""
 
     }
   ]

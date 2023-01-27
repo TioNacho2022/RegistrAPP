@@ -1,11 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>escanear QR</ion-title>
+  <ion-toolbar color="fondo" class="ion-text-center">
+    <h3><ion-icon name="scan-outline" slot="start"></ion-icon>Escanear QR</h3>
+  </ion-toolbar>
+  <ion-toolbar color="fondo">
+    <ion-buttons slot="start">
+      <ion-back-button text="volver"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" [style.--background]="scanActivate?'#00000000': 'ffe2ba'">
-  <ion-button expand="full" (click)="startScanner()" [hidden]="scanActivate" color="dark">Escanear QR</ion-button>
+  <ion-button  expand="full" (click)="startScanner()" [hidden]="scanActivate" color="duoc"><ion-icon name="barcode-sharp"></ion-icon>iniciar</ion-button>
   <ion-row class="scan-button" [hidden]="!scanActivate">
     <ion-col class="ion-no-padding">
       <ion-button expand="full" (click)="stopScanner()" color="danger">Detener</ion-button>

@@ -35,6 +35,7 @@ export class ApiBaseService {
       if(res[0]?.usuario === usuario && res[0]?.password === password){
         const alert = await this.alertController.create({
           header: 'Sesion iniciada',
+          mode:'ios',
           message: `<img src="../../assets/icon/importar.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
         });
 
@@ -46,7 +47,8 @@ export class ApiBaseService {
 
       }else{
         const alert = await this.alertController.create({
-          header: 'Sesion invalida',
+          header: 'Datos Incorrectos',
+          mode:'ios',
           message: `<img src="../../assets/icon/acceso.png" alt="g-maps" style="border-radius: 2px">`,
         });
 
@@ -81,7 +83,7 @@ export class ApiBaseService {
   }
 
   public ecnotrarAlumno(id:number){
-    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.usuarioDatos.rut}`,{
+    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.usuarioDatos?.rut}`,{
       headers: {
         'Content-Type': 'application/json'
       },
@@ -96,7 +98,9 @@ export class ApiBaseService {
 
       }else{
         const alert = await this.alertController.create({
-          header: 'Usuario no existe',
+          header: 'Alumno no encontrado!',
+          subHeader: 'no pertenece a esta seccion',
+          mode:'ios',
           message: `<img src="../../assets/icon/user.png" alt="g-maps" style="border-radius: 2px">`,
         });
 
@@ -108,18 +112,41 @@ export class ApiBaseService {
   }
 
   public presente(id:number){
-    this.http.patch(this.url_alumnos+'/'+id,{'presente':true},{
+    this.http.get<any>(this.url_alumnos+'/'+id,{
       headers: {
         'Content-Type': 'application/json'
-      },
+      }
     }).subscribe(async res => {
+      if(res.presente === false){
 
-      const alert = await this.alertController.create({
-        header: 'Asitencia completa',
-        message: `<img src="../../assets/icon/checked.png" alt="g-maps" style="border-radius: 2px">`,
-      });
+        const fecha = new Date();
+        var hora = fecha.getHours()+':'+fecha.getMinutes()
 
-      await alert.present();
+        this.http.patch(this.url_alumnos+`/${id}`,{"presente":true,"hora":hora},{
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).subscribe(async res => {
+
+          const alert = await this.alertController.create({
+            header: 'Registrado!',
+            mode:'ios',
+            message: `<img src="../../assets/icon/checked.png" alt="g-maps" style="border-radius: 2px">`,
+          });
+
+          await alert.present();
+        })
+
+
+      }else{
+        const alert = await this.alertController.create({
+          header: 'Ya registrado!',
+          mode:'ios',
+          message: `<img src="../../assets/icon/error.png" alt="g-maps" style="border-radius: 2px">`,
+        });
+
+        await alert.present();
+      }
 
     })
   }

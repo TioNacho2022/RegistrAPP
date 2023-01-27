@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-toolbar color="duoc" class="ion-text-center">
+  <ion-toolbar color="fondo" class="ion-text-center">
     <h3><ion-icon name="qr-code-outline" slot="start"></ion-icon> Generar QR</h3>
   </ion-toolbar>
-  <ion-toolbar color="duoc">
+  <ion-toolbar color="fondo">
     <ion-buttons slot="start">
-      <ion-back-button text="volver"></ion-back-button>
+      <ion-back-button text="volver" defaultHref="inicio"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card class="ion-text-center">
+<ion-card class="ion-text-center" color="duoc">
   <qrcode *ngIf="v2"
   [qrdata]="qrCodeString"
   [width]="236"
@@ -25,7 +25,7 @@
             <h3 *ngIf="v2">{{nombre}} {{sigla}}
             </h3>
             <ion-list *ngIf="v3">
-              <ion-select formControlName="nombre" placeholder="Asignatura">
+              <ion-select formControlName="nombre" placeholder="Asignatura" style="border-radius:3em">
                 <ion-select-option  *ngFor="let r of this.api.obtenerRamosDatos()">{{r.nombre}} {{r.sigla}}</ion-select-option>
               </ion-select>
               <ion-note slot="error" color="danger" *ngIf="campo('nombre')?.invalid  && campo('nombre')?.errors && campo('nombre')?.errors.required && (fueTocado('nombre')|| v)">Campo obligatorio</ion-note>
@@ -34,28 +34,28 @@
         </ion-row>
         <ion-row *ngIf="v4">
           <ion-col>
-            <ion-button shape="round" color="medium" size="small">
-              <ion-icon name="calendar-outline" slot="start"></ion-icon>
+            <ion-button shape="round" color="light" size="small">
+              <ion-icon name="calendar-outline" slot="start" color="fondo"></ion-icon>
               {{this.qr.fecha}}
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button shape="round" color="medium" size="small">
-              <ion-icon name="alarm-outline" slot="start"></ion-icon>
+            <ion-button shape="round" color="light" size="small">
+              <ion-icon name="alarm-outline" slot="start" color="fondo"></ion-icon>
               {{this.qr.hora}}
             </ion-button>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button *ngIf="!v4" (click)="GenerarQr()" expand="block" color="dark" >
+            <ion-button *ngIf="!v4" (click)="GenerarQr()" expand="block" color="fondo" >
               Generar QR
             </ion-button>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button  *ngIf="v4" (click)="showLoading()" expand="block" color="dark" >
+            <ion-button  *ngIf="v4" (click)="showLoading()" expand="block" color="fondo" >
               Finalizar
             </ion-button>
           </ion-col>

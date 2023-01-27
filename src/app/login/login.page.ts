@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
     }else{
       const alert = await this.alertController.create({
         header: 'Campos invalidos!',
+        mode:'ios',
         message: `<img src="../../assets/icon/cancelar.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
       });
 
