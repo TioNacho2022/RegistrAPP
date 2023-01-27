@@ -45,7 +45,7 @@ export class EscanQrPage implements OnInit {
 
         this.api.ecnotrarAlumno(this.datosQr?.id);
 
-        }
+
 
 
       }else{
