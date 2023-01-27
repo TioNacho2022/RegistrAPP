@@ -82,6 +82,30 @@ export class ApiBaseService {
     })
   }
 
+  public desactivarAsistencia(id:number,callback?:Function):any{
+
+    this.http.patch(this.url_asitencias+`/${id}`,{"activa":false},{
+      headers: {
+        'Content-Type': 'application/json'
+
+      },
+    }).subscribe( async res =>{
+      if(callback)
+      callback()
+    })
+  }
+
+  public confirmarAsitenciaActiva(id:number):any{
+    this.http.get<any>(this.url_asitencias+`/${id}`,{
+      headers: {
+        'Content-Type': 'application/json'
+
+      },
+    }).subscribe(res =>{
+      return res?.activa;
+    })
+  }
+
   public ecnotrarAlumno(id:number){
     this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.usuarioDatos?.rut}`,{
       headers: {

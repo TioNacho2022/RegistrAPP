@@ -21,6 +21,8 @@ export class GenerarQrPage{
   public sigla! :string;
   public nombre! :string;
   public listaalumnosId! :number;
+  public cargando:boolean= false;
+  public finalizando:boolean=false;
 
   qrCodeString:string = "";
 
@@ -28,7 +30,8 @@ export class GenerarQrPage{
     id:0,
     ramosId : 0,
     fecha : '',
-    hora: ''
+    hora: '',
+    activa:true
   }
 
   constructor(private builder:FormBuilder, public api : ApiBaseService,  private alertController: AlertController,private loadingCtrl: LoadingController) {
@@ -42,11 +45,11 @@ export class GenerarQrPage{
   }
 
 
-
   public async GenerarQr(){
 
 
     if(this.formQr.valid){
+      this.cargando= true;
       for (let index = 0; index < this.api.obtenerRamosDatos().length; index++) {
         if(this.formQr.get('nombre').value === this.api.obtenerRamosDatos()[index]?.nombre+' '+this.api.obtenerRamosDatos()[index]?.sigla){
          this.qr.ramosId = this.api.obtenerRamosDatos()[index]?.id;
@@ -62,9 +65,16 @@ export class GenerarQrPage{
 
 
 
-      this.api.agregarAsitencia({...this.qr}, ()=>{
+      this.api.agregarAsitencia({...this.qr}, async ()=>{
         this.qr.id = this.api.obtenerAsitenciaDatos()?.id
         this.qrCodeString = JSON.stringify(this.qr);
+        const alert = await this.alertController.create({
+          header: 'Asistencia generada',
+          message: `<img src="../../assets/icon/qr-code.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
+        });
+
+        await alert.present();
+        this.cargando=false;
         this.v2= true;
         this.v3=false;
         this.v4=true;
@@ -88,19 +98,31 @@ export class GenerarQrPage{
 
   }
 
-  public showLoading() {
-
-    this.v2 = false;
-    this.v3 = true;
-    this.v4 = false;
-    this.qr = {
+  public finalizar() {
+    this.finalizando = true;
+    this.api.desactivarAsistencia(this.qr.id, async ()=>{
+      this.finalizando= false;
+      this.v2 = false;
+      this.v3 = true;
+      this.v4 = false;
+      this.qr = {
       id:0,
       ramosId : 0,
       fecha : '',
-      hora: ''
-    }
+      hora: '',
+      activa:false
+      }
+      this.qrCodeString = '';
 
-    this.qrCodeString = '';
+      const alert = await this.alertController.create({
+        header: 'Asistencia finalizada!',
+        message: `<img src="../../assets/icon/hire.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
+      });
+
+      await alert.present();
+
+    })
+
   }
 
 
