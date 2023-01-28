@@ -70,6 +70,7 @@ export class GenerarQrPage{
         this.qrCodeString = JSON.stringify(this.qr);
         const alert = await this.alertController.create({
           header: 'Asistencia generada',
+          mode:"ios",
           message: `<img src="../../assets/icon/qr-code.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
         });
 
@@ -85,6 +86,7 @@ export class GenerarQrPage{
 
       const alert = await this.alertController.create({
         header: 'Campos invalidos!',
+        mode:"ios",
         message: `<img src="../../assets/icon/cancelar.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
       });
 
@@ -116,6 +118,7 @@ export class GenerarQrPage{
 
       const alert = await this.alertController.create({
         header: 'Asistencia finalizada!',
+        mode:"ios",
         message: `<img src="../../assets/icon/hire.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
       });
 

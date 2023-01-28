@@ -1,0 +1,38 @@
+<ion-header class="ion-text-center">
+  <ion-toolbar color="fondo">
+    <h1>Registr<span>APP</span></h1>
+  </ion-toolbar>
+  <ion-toolbar color="fondo">
+    <ion-buttons slot="start">
+      <ion-back-button text="volver"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header color="fondo">
+      <ion-card-title>{{this.api.obtenerRamoDatos()?.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{this.api.obtenerRamoDatos()?.sigla}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+          <ion-button shape="round" color="fondo" size="small">
+            <ion-icon name="calendar-outline" slot="start" color="fondo"></ion-icon>
+            {{this.api.obtenerAsistencia2Datos()?.fecha}}
+          </ion-button>
+        </ion-list-header>
+        <ion-item *ngFor="let a of this.api.obtenerAlumnosDatos()">
+          <ion-label class="ion-text-center">
+            <h4>{{a?.pNombre}} {{a?.sNombre}} {{a?.apPaterno}}  {{a?.apMaterno}}</h4>
+            <p>{{a?.rut}}</p>
+            <p>{{a?.hora}}</p>
+            <img *ngIf="!a?.presente" src="./../assets/icon/cancelar (1).png">
+            <img *ngIf="a?.presente" src="./../assets/icon/comprobado.png">
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

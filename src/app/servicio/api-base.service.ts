@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Ramos } from '../modelos/ramo';
 import { Asistencia, AsistenciaResponse } from '../modelos/asitencia';
 import { Alumno } from '../modelos/alumno';
+import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,11 +16,17 @@ export class ApiBaseService {
 
   private ramosDatos!:Ramos;
 
+  private alumnosDatos!:any;
+
+  private ramoDatos!:any;
+
   private asistenciaDatos!: any;
+
+  private asistencia2Datos!: any;
 
   private presenteDatos!:Alumno|any;
 
-  constructor(private http:HttpClient, private alertController: AlertController, private router:Router) { }
+  constructor(private http:HttpClient, private alertController: AlertController, private router:Router, private storage:StorageService) { }
 
   private url_usuarios:string="https://registrapp-production.up.railway.app/usuarios";
   private url_ramos:string="https://registrapp-production.up.railway.app/ramos";
@@ -42,6 +49,9 @@ export class ApiBaseService {
         await alert.present();
 
         this.usuarioDatos = res[0];
+
+        this.storage.set('rut',this.usuarioDatos?.rut)
+
 
         this.router.navigate(['/inicio']);
 
@@ -95,19 +105,30 @@ export class ApiBaseService {
     })
   }
 
-  public confirmarAsitenciaActiva(id:number):any{
+  public confirmarAsitenciaActiva(id:number,callback?:Function):any{
     this.http.get<any>(this.url_asitencias+`/${id}`,{
       headers: {
         'Content-Type': 'application/json'
 
       },
-    }).subscribe(res =>{
-      return res?.activa;
+    }).subscribe(async res =>{
+      if(callback && res?.activa){
+        callback()
+      }else{
+        const alert = await this.alertController.create({
+          header: 'Asitencia no activa!',
+          mode:'ios',
+          message: `<img src="../../assets/icon/colgando.png" alt="g-maps" style="border-radius: 2px">`,
+        });
+
+        await alert.present();
+      }
+
     })
   }
 
   public ecnotrarAlumno(id:number){
-    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.usuarioDatos?.rut}`,{
+    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.storage.get('rut')}`,{
       headers: {
         'Content-Type': 'application/json'
       },
@@ -175,6 +196,38 @@ export class ApiBaseService {
     })
   }
 
+  public alumnos(id:number){
+    this.http.get<any>(this.url_alumnos+`?asistenciasId=${id}`,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).subscribe( resp => {
+      this.alumnosDatos = resp
+      this.asistencia(id)
+    })
+  }
+
+  public asistencia(id:number){
+    this.http.get<any>(this.url_asitencias+`/${id}`,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).subscribe(res => {
+      this.asistencia2Datos = res
+      this.ramo(res?.ramosId)
+    })
+  }
+
+  public ramo(id:number){
+    this.http.get(this.url_ramos+`/${id}`,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).subscribe( res => {
+      this.ramoDatos = res;
+    })
+  }
+
 
 
   public vaciar(){
@@ -194,5 +247,17 @@ export class ApiBaseService {
 
   public obtenerPresenteDatos(){
     return this.presenteDatos[0];
+  }
+
+  public obtenerRamoDatos(){
+    return this.ramoDatos;
+  }
+
+  public obtenerAsistencia2Datos(){
+    return this.asistencia2Datos;
+  }
+
+  public obtenerAlumnosDatos(){
+    return this.alumnosDatos;
   }
 }

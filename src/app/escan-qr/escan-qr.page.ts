@@ -43,8 +43,9 @@ export class EscanQrPage implements OnInit {
         this.scanActivate = false;
         this.datosQr = JSON.parse(result.content);
 
-        this.api.ecnotrarAlumno(this.datosQr?.id);
-
+        this.api.confirmarAsitenciaActiva(this.datosQr?.id,async()=>{
+          this.api.ecnotrarAlumno(this.datosQr?.id);
+        })
 
 
 
