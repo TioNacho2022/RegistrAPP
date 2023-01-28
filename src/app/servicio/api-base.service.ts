@@ -134,7 +134,7 @@ export class ApiBaseService {
       },
     }).subscribe(async res => {
       this.presenteDatos = res
-      if(this.presenteDatos[0]?.rut === this.usuarioDatos?.rut){
+      if(this.presenteDatos[0]?.rut === this.storage.get('rut')){
 
         this.presenteDatos = res;
 
