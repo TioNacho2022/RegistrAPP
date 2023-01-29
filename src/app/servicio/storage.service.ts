@@ -16,14 +16,14 @@ export class StorageService {
   async init() {
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
-    this._storage = storage;
+    this.storage = storage;
   }
 
   public async set(key: string, value: any){
-    await this._storage?.set(key, value);
+    await this.storage?.set(key, value);
   }
 
   public async get(key: string){
-    await this._storage?.get(key);
+    await this.storage?.get(key);
   }
 }

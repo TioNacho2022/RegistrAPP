@@ -50,9 +50,6 @@ export class ApiBaseService {
 
         this.usuarioDatos = res[0];
 
-        this.storage.set('rut',this.usuarioDatos?.rut)
-
-
         this.router.navigate(['/inicio']);
 
       }else{
@@ -127,14 +124,14 @@ export class ApiBaseService {
     })
   }
 
-  public ecnotrarAlumno(id:number){
-    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.storage.get('rut')}`,{
+  public async ecnotrarAlumno(id:number){
+    this.http.get(this.url_alumnos+`?asistenciasId=${id}&rut=${this.usuarioDatos?.rut}`,{
       headers: {
         'Content-Type': 'application/json'
       },
     }).subscribe(async res => {
       this.presenteDatos = res
-      if(this.presenteDatos[0]?.rut === this.storage.get('rut')){
+      if(this.presenteDatos[0]?.rut === this.usuarioDatos?.rut){
 
         this.presenteDatos = res;
 

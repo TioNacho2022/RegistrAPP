@@ -16,6 +16,7 @@ export class EscanQrPage implements OnInit {
   constructor(private api:ApiBaseService) { }
 
   ngOnInit() {
+    this.api.ecnotrarAlumno(2);
   }
 
   async checkPermission(){
