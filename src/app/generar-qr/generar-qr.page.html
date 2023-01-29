@@ -15,7 +15,7 @@
       <ion-progress-bar *ngIf="cargando"  type="indeterminate" color="fondo"></ion-progress-bar>
       <ion-progress-bar *ngIf="finalizando"  type="indeterminate" color="fondo"></ion-progress-bar>
       <ion-row>
-        <ion-col width="236">
+        <ion-col width="236" class="ion-margin-top">
           <qrcode *ngIf="v2"
           [qrdata]="qrCodeString"
           [width]="200"
@@ -30,7 +30,7 @@
               <h3 *ngIf="v2">{{nombre}} {{sigla}}
               </h3>
               <ion-list *ngIf="v3">
-                <ion-select formControlName="nombre" placeholder="Asignatura" style="border-radius:3em">
+                <ion-select formControlName="nombre" placeholder="Asignatura">
                   <ion-select-option  *ngFor="let r of this.api.obtenerRamosDatos()">{{r.nombre}} {{r.sigla}}</ion-select-option>
                 </ion-select>
                 <ion-note slot="error" color="danger" *ngIf="campo('nombre')?.invalid  && campo('nombre')?.errors && campo('nombre')?.errors.required && (fueTocado('nombre')|| v)">Campo obligatorio</ion-note>
