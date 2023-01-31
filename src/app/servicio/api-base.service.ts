@@ -28,6 +28,8 @@ export class ApiBaseService {
 
   public opcionProfesor:boolean = false
 
+  public opcionAlumno:boolean = false
+
   public sessionActive:boolean = false
 
   constructor(private http:HttpClient, private alertController: AlertController, private router:Router, private storage:StorageService) { }
@@ -53,6 +55,9 @@ export class ApiBaseService {
 
         if(res[0]?.tipo === 'profesor'){
           this.opcionProfesor = true;
+
+        }else{
+          this.opcionAlumno = true;
         }
 
 

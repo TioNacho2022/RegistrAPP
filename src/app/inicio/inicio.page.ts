@@ -37,6 +37,8 @@ export class InicioPage implements OnInit {
 
   public cerrarSesion(){
     this.api.sessionActive = false;
+    this.api.opcionAlumno = false;
+    this.api.opcionProfesor= false;
     this.router.navigate(['/'])
   }
 

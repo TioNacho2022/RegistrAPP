@@ -11,7 +11,7 @@ export class AsistenciasPage implements OnInit {
   constructor( public api:ApiBaseService){}
 
   ngOnInit() {
-    this.api.alumnos(2);
+    this.api.alumnos(1);
   }
 
   public buscar(){

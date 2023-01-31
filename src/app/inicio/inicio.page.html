@@ -11,7 +11,7 @@
     <ion-button *ngIf="this.api.opcionProfesor" mode="ios" expand="full" [routerLink]="['/generar-qr']" color="fondo">
       <ion-icon name="qr-code-outline" slot="start"></ion-icon>Generar QR
     </ion-button>
-    <ion-button mode="ios" expand="full" [routerLink]="['/qr']" color="fondo">
+    <ion-button *ngIf="this.api.opcionAlumno" mode="ios" expand="full" [routerLink]="['/qr']" color="fondo">
       <ion-icon name="scan-outline" slot="start"></ion-icon>Escanear QR
     </ion-button>
     <ion-button *ngIf="this.api.opcionProfesor" mode="ios" expand="full" [routerLink]="['/asistencias']" color="fondo">
