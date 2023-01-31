@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiBaseService } from '../servicio/api-base.service';
 import { Platform } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -12,7 +13,7 @@ export class InicioPage implements OnInit {
   public mobile: boolean = false;
   public desktop: boolean = false;
 
-  constructor(public api:ApiBaseService,public platform:Platform, private alertController: AlertController) { }
+  constructor(public api:ApiBaseService,public platform:Platform, private alertController: AlertController, private router:Router) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,12 @@ export class InicioPage implements OnInit {
 
       await alert.present();
     }else{}
+
+  }
+
+  public cerrarSesion(){
+    this.api.sessionActive = false;
+    this.router.navigate(['/'])
   }
 
 }

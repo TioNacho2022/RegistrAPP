@@ -46,6 +46,17 @@
       "password": "1234",
       "correo": "cris.leiva@duocuc.cl",
       "tipo": "alumno"
+    },{
+      "id": 4,
+      "pNombre": "Julio",
+      "sNombre": "Herrera",
+      "apPaterno": "leiva2",
+      "apMaterno": "Diaz2",
+      "usuario": "karen.ponc",
+      "rut": "19918768-8",
+      "password": "1234",
+      "correo": "cris.leiva@duocuc.cl",
+      "tipo": "profesor"
     }
   ],
 
@@ -75,7 +86,7 @@
   "alumnos": [
     {
       "id": 0,
-      "asistenciasId":2,
+      "asistenciasId":1,
       "pNombre": "Cristian",
       "sNombre": "Bastian",
       "apPaterno": "leiva",
@@ -89,7 +100,7 @@
 
     },{
       "id": 1,
-      "asistenciasId":2,
+      "asistenciasId":1,
       "pNombre": "Matias",
       "sNombre": "Bastian",
       "apPaterno": "leiva",
