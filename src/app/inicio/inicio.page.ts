@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiBaseService } from '../servicio/api-base.service';
+import { Platform } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -6,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+  public mobile: boolean = false;
+  public desktop: boolean = false;
 
-  constructor() { }
+  constructor(public api:ApiBaseService,public platform:Platform, private alertController: AlertController) { }
 
   ngOnInit() {
+  }
+
+  async ionViewWillEnter(){
+
+    if(this.platform.is('mobile')){
+      this.mobile = true;
+    }if(this.platform.is('desktop')){
+      const alert = await this.alertController.create({
+        header: 'Escanea y descarga',
+        subHeader: 'APK',
+        message: '<img src="../../assets/icon/frame.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">',
+
+      });
+
+      await alert.present();
+    }else{}
   }
 
 }

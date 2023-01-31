@@ -5,13 +5,13 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-button mode="ios" expand="full" [routerLink]="['/generar-qr']" color="fondo">
+    <ion-button *ngIf="this.api.opcionProfesor" mode="ios" expand="full" [routerLink]="['/generar-qr']" color="fondo">
       <ion-icon name="qr-code-outline" slot="start"></ion-icon>Generar QR
     </ion-button>
     <ion-button mode="ios" expand="full" [routerLink]="['/qr']" color="fondo">
       <ion-icon name="scan-outline" slot="start"></ion-icon>Escanear QR
     </ion-button>
-    <ion-button mode="ios" expand="full" [routerLink]="['/asistencias']" color="fondo">
+    <ion-button *ngIf="this.api.opcionProfesor" mode="ios" expand="full" [routerLink]="['/asistencias']" color="fondo">
       <ion-icon name="list-outline" slot="start"></ion-icon>Lista de asistencias
     </ion-button>
   </ion-content>
@@ -26,6 +26,81 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-slides>
+            <ion-slide>
+              <ion-card class="ion-no-padding">
+                <ion-card-header color="duoc" class="ion-no-padding">
+                  <ion-item color="duoc">
+                    <ion-avatar slot="start" size="small">
+                      <img alt="Silhouette of a person's head" src="https://scontent.fscl32-1.fna.fbcdn.net/v/t1.6435-9/104168865_1625884374236487_705419051709855692_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7QaNkyw2qTcAX8Jf617&_nc_ht=scontent.fscl32-1.fna&oh=00_AfAU_9wIDHO6jP0DykvFn7VD8U6YWwN8MzJiaYxcNDZ1xA&oe=63FFFCB4" />
+                    </ion-avatar>
+                    <h6>Duoc UC: Sede San Bernardo
+                    </h6>
+                  </ion-item>
+                </ion-card-header>
+                <ion-card-content class="ion-margin-top">
+                  <p>¡Es Hoy 🙌!  Partió la inscripción de asignaturas del primer semestre 2023 🙇🏻‍♂️📖en los siguientes horarios:
+                    ☀️Diurnos: 10:00 a 14:00 horas
+                    🌙Vespertinos: 18:00 a 21:00 horas
+                    Podrás encontrar todo lo que necesitas saber en 📲http://inscripciones.duoc.cl/IA/ o en el link de apoyo en línea de nuestra Bio.
+                  </p>
+                </ion-card-content>
+                <img src="https://scontent.fscl32-1.fna.fbcdn.net/v/t39.30808-6/325770869_717458816397448_6787341671462614493_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a26aad&_nc_ohc=_BdBL0iUxCEAX_4qrYU&_nc_ht=scontent.fscl32-1.fna&oh=00_AfAon5BY9iLqpXmN7-vHDCEdJPKpcJXt8qGEe48xvwM4Gg&oe=63DE37C3" alt="">
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="ion-no-padding">
+                <ion-card-header color="duoc" class="ion-no-padding">
+                  <ion-item color="duoc">
+                    <ion-avatar slot="start" size="small">
+                      <img alt="Silhouette of a person's head" src="https://scontent.fscl32-1.fna.fbcdn.net/v/t1.6435-9/104168865_1625884374236487_705419051709855692_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7QaNkyw2qTcAX8Jf617&_nc_ht=scontent.fscl32-1.fna&oh=00_AfAU_9wIDHO6jP0DykvFn7VD8U6YWwN8MzJiaYxcNDZ1xA&oe=63FFFCB4" />
+                    </ion-avatar>
+                    <h6>Duoc UC: Sede San Bernardo
+                    </h6>
+                  </ion-item>
+                </ion-card-header>
+                <ion-card-content class="ion-margin-top">
+                  <p>¡Atención nuevos alumnos 🚨!
+                    Si ingresas a la educación superior por primera vez, debes tomar tu fotografía para la TNE 2023 📸. Puedes asistir a nuestra sede en Freire 857,San Bernardo, a un costado del CITT, el miércoles 11 y jueves 12 de enero 📆 desde las 10:00 a 19:00hrs.
+                  </p>
+                </ion-card-content>
+                <img src="https://scontent.fscl32-1.fna.fbcdn.net/v/t39.30808-6/324434957_478031224494465_296798877469151498_n.jpg?stp=dst-jpg_p526x296&_nc_cat=110&ccb=1-7&_nc_sid=730e14&_nc_ohc=hZLwidzVlGsAX-ma0pe&_nc_ht=scontent.fscl32-1.fna&oh=00_AfCEHoLTcbPxfKq0DpH9LV6hhstMgeOLy93IJoFeIahEAg&oe=63DD01F9" alt="">
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-card-header color="duoc" class="ion-no-padding">
+                  <ion-item color="duoc">
+                    <ion-avatar slot="start" size="small">
+                      <img alt="Silhouette of a person's head" src="https://scontent.fscl32-1.fna.fbcdn.net/v/t1.6435-9/104168865_1625884374236487_705419051709855692_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7QaNkyw2qTcAX8Jf617&_nc_ht=scontent.fscl32-1.fna&oh=00_AfAU_9wIDHO6jP0DykvFn7VD8U6YWwN8MzJiaYxcNDZ1xA&oe=63FFFCB4" />
+                    </ion-avatar>
+                    <h6>Duoc UC: Sede San Bernardo
+                    </h6>
+                  </ion-item>
+                </ion-card-header>
+                <ion-card-content class="ion-margin-top">
+                  <p>¡Siempre es bueno estar de vuelta! 🤗🤗
+                    Te compartimos parte de lo que fue nuestro primer Encuentro de Titulados Duoc UC San Bernardo 🧑🏼‍🎓👩🏻‍🎓 Donde pudimos volver a vernos con antiguos alumnos de las diferentes carreras que se imparten en nuestra sede, y quienes además forman parte de nuestra Comunidad de Titulados. 🥳👏👩🏻‍🎓 Esperamos volver a verles y les deseamos el mayor de los éxitos❤️.
+                  </p>
+                </ion-card-content>
+                <img src="https://scontent.fscl32-1.fna.fbcdn.net/v/t39.30808-6/321046134_517383110341619_360159037787795280_n.jpg?stp=dst-jpg_p526x395&_nc_cat=110&ccb=1-7&_nc_sid=730e14&_nc_ohc=A3uNoYykpTkAX-HJbtw&_nc_ht=scontent.fscl32-1.fna&oh=00_AfBjxCnl55zMlQ1yra-o9I5Gw3rhm2poLVBFiWjiBr0N2w&oe=63DE805D" alt="">
+              </ion-card>
+            </ion-slide>
 
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <a *ngIf="mobile" href="https://drive.google.com/drive/folders/19vaDsL27RI0SqS-AKrBLVPshXBDGVlTn?usp=share_link">
+      <ion-fab slot="fixed" horizontal="end" vertical="bottom" size="large">
+        <ion-fab-button color="success" style="display: flex;">
+          <ion-icon name="download"></ion-icon>
+          <p>APK</p>
+        </ion-fab-button>
+      </ion-fab>
+    </a>
   </ion-content>
 </div>

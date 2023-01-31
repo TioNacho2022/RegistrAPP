@@ -5,17 +5,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid >
     <ion-row>
       <ion-col class="ion-text-center">
         <p>Una nueva forma de asistencia</p>
       </ion-col>
     </ion-row>
-    <form action="" [formGroup]="formularioLogin" style="justify-content: center;">
-      <ion-row>
+    <form action="" [formGroup]="formularioLogin" class="ion-margin-top">
+      <ion-row >
         <ion-col>
-          <ion-item class="ion-padding-top">
-            <ion-label position="floating" class="login-label">Usuario:</ion-label>
+          <ion-item >
+            <ion-label position="floating" class="login-label" class="ion-margin-buttom">Usuario:</ion-label>
             <ion-input formControlName="usuario" class="ion-margin-top"><ion-icon name="person-sharp" color="fondo" class="ion-padding-end"></ion-icon></ion-input>
             <ion-note slot="error" *ngIf="campo('usuario')?.invalid  && campo('usuario')?.errors && campo('usuario')?.errors.required && fueTocado('usuario')">Obligatorio</ion-note>
             <ion-note slot="error" *ngIf="campo('usuario')?.invalid  && campo('usuario')?.errors && campo('usuario')?.errors.minlength" >Caracteres minimo</ion-note>
@@ -41,7 +41,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button mode="ios" expand="full"fill="clear" color="danger" [routerLink]="['registrarse']">Restablecer Contraseña</ion-button>
+          <ion-button mode="ios" expand="full"fill="clear" color="danger" [routerLink]="['/password']">Restablecer Contraseña</ion-button>
         </ion-col>
       </ion-row>
     </form>

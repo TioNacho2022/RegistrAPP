@@ -4,6 +4,7 @@ import { AlertController, NavController, ToastController } from '@ionic/angular'
 import { ApiBaseService } from '../servicio/api-base.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,6 +12,7 @@ import { ApiBaseService } from '../servicio/api-base.service';
 })
 export class LoginPage implements OnInit {
   formularioLogin: FormGroup | any;
+
 
   constructor( private alertController: AlertController, private navCtrl: NavController, private toast: ToastController, private fb: FormBuilder,private api: ApiBaseService) {
     this.formularioLogin = this.fb.group({
@@ -20,7 +22,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
+
+
 
   public async ingresar(){
     if(this.formularioLogin.valid){

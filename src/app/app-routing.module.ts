@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ActiveSessionGuard } from './guards/active-session.guard';
 
 const routes: Routes = [
   {
@@ -8,23 +9,24 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
+    canActivate:[ActiveSessionGuard],
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
-    path: 'qr',
+    path: 'qr',canActivate:[ActiveSessionGuard],
     loadChildren: () => import('./escan-qr/escan-qr.module').then( m => m.EscanQrPageModule)
   },
   {
-    path: 'generar-qr',
+    path: 'generar-qr',canActivate:[ActiveSessionGuard],
     loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule)
   },
   {
-    path: 'registrarse',
-    loadChildren: () => import('./registrarse/registrarse.module').then( m => m.RegistrarsePageModule)
+    path: 'asistencias',canActivate:[ActiveSessionGuard],
+    loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
   },
   {
-    path: 'asistencias',
-    loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
+    path: 'password',
+    loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
   }
 ];
 

@@ -32,6 +32,7 @@
     "angularx-qrcode": "^15.0.1",
     "ionicons": "^6.0.3",
     "json-server": "^0.17.1",
+    "nodemailer": "^6.9.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

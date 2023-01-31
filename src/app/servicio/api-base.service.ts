@@ -26,6 +26,10 @@ export class ApiBaseService {
 
   private presenteDatos!:Alumno|any;
 
+  public opcionProfesor:boolean = false
+
+  public sessionActive:boolean = false
+
   constructor(private http:HttpClient, private alertController: AlertController, private router:Router, private storage:StorageService) { }
 
   private url_usuarios:string="https://registrapp-production.up.railway.app/usuarios";
@@ -40,15 +44,22 @@ export class ApiBaseService {
       },
     }).subscribe(async res =>{
       if(res[0]?.usuario === usuario && res[0]?.password === password){
+        this.sessionActive = true;
         const alert = await this.alertController.create({
           header: 'Sesion iniciada',
           mode:'ios',
           message: `<img src="../../assets/icon/importar.png" alt="g-maps" style="border-radius: 2px;text-aling:center;">`,
         });
 
+        if(res[0]?.tipo === 'profesor'){
+          this.opcionProfesor = true;
+        }
+
+
         await alert.present();
 
         this.usuarioDatos = res[0];
+
 
         this.router.navigate(['/inicio']);
 
